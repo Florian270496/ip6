@@ -172,7 +172,6 @@ tr:hover:not(.v-data-table__expanded__content):not(thead tr), .v-data-table__exp
 @media (max-width: calc(576 * 0.0625em)) {
     .detail-view__content {
         padding-left: 0;
-        width: auto;
     }
 }
 
@@ -185,12 +184,6 @@ tr:hover:not(.v-data-table__expanded__content):not(thead tr), .v-data-table__exp
 
 .detail-view__content--square {
     padding: 0;
-}
-
-@media (max-width: calc(576 * 0.0625em)) {
-    .detail-view__content--square {
-        width: auto;
-    }
 }
 
 .detail-view__content--graphic {
@@ -257,12 +250,6 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-@media (max-width: calc(576 * 0.0625em)) {
-    .detail-view__notification {
-        width: auto;
-    }
 }
 
 fieldset, .v-text-field--outlined fieldset {
