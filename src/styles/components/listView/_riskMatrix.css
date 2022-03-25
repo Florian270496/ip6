@@ -34,7 +34,6 @@
     .detail-view__risk-matrix-description {
         padding: calc(8 * 0.0625rem) 0;
         border: none;
-        width: calc(325 * 0.0625rem);
         text-align: left;
     }
 

@@ -171,8 +171,8 @@ tr:hover:not(.v-data-table__expanded__content):not(thead tr), .v-data-table__exp
 
 @media (max-width: calc(576 * 0.0625em)) {
     .detail-view__content {
-        padding-left: calc(0 * 0.0625rem);
-        width: calc(300 * 0.0625rem);
+        padding-left: 0;
+        width: auto;
     }
 }
 
@@ -223,9 +223,9 @@ li {
     width: calc(600 * 0.0625rem);
 }
 
-@media (max-width: calc(1058 * 0.0625em)) {
+@media (max-width: calc(576 * 0.0625em)) {
     .detail-view__evaluation-question {
-        width: calc(300 * 0.0625rem);
+        width: auto;
     }
 }
 
@@ -261,7 +261,7 @@ li {
 
 @media (max-width: calc(576 * 0.0625em)) {
     .detail-view__notification {
-        width: calc(300 * 0.0625rem);
+        width: auto;
     }
 }
 
