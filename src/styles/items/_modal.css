@@ -84,14 +84,14 @@
 }
 
 .modal__inner-part {
-    padding: calc(77.5 * 0.0625rem) calc(30 * 0.0625rem);
+    padding: calc(30 * 0.0625rem) calc(30 * 0.0625rem) calc(30 * 0.0625rem) calc(30 * 0.0625rem);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: calc(335 * 0.0625rem);
 }
 
-.modal__inner-top-part {
+.modal__inner-top-part, .modal__icon-box {
     display: flex;
     justify-content: center;
 }
