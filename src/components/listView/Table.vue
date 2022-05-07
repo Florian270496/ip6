@@ -332,8 +332,6 @@ export default {
       specification_customMadeDevice: null,
       postProcessingPossibility: null,
       search: '',
-      notApplicableSort: [false],
-      acceptedSort: [],
       expanded: [],
       singleExpand: false,
       hazardsHeader: [
@@ -785,7 +783,6 @@ export default {
       }
 
       // Update Sort
-      this.notApplicableSort.length = 0
       for (let a = 0; a < this.hazards.length; a++) {
         let numberInArray = a + 1
 
