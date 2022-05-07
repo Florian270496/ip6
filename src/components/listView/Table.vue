@@ -56,7 +56,8 @@
                  fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M16 1L5.6875 14L1 8.09091" stroke="#4C5A69" stroke-width="1.5" stroke-linecap="round"
                     stroke-linejoin="round"
-                    :stroke-opacity="itemIdPartOfacceptCounterArray(item.id, 'checkedCheckboxesArray', '1.0', '0.2')"/>
+                    :stroke-opacity="itemIdPartOfAcceptArray(item.id, 'checkedCheckboxesArray', '1.0', '0.2')"
+              />
             </svg>
           </div>
         </template>
@@ -326,7 +327,7 @@ export default {
       numberOfCheckedCheckboxesValue: 0,
       acceptCounter: 0,
       checkedCheckboxesArray: [],
-      acceptCounterArray: [],
+      acceptArray: [],
       sortBy: 'riskPriority',
       sortDesc: true,
       specification_customMadeDevice: null,
@@ -665,8 +666,8 @@ export default {
     if (localStorage.checkedCheckboxesArray === undefined || localStorage.checkedCheckboxesArray === '') {
       localStorage.checkedCheckboxesArray = JSON.stringify([])
     }
-    if (localStorage.acceptCounterArray === undefined || localStorage.acceptCounterArray === '') {
-      localStorage.acceptCounterArray = JSON.stringify([])
+    if (localStorage.acceptArray === undefined || localStorage.acceptArray === '') {
+      localStorage.acceptArray = JSON.stringify([])
     }
 
     if (this.nameCounterTable === 0) {
@@ -716,20 +717,20 @@ export default {
         }
       }
 
-      if (localStorage.acceptCounterArray !== undefined || localStorage.acceptCounterArray !== '') {
-        for (let i = 0; i < JSON.parse(localStorage.acceptCounterArray).length; i++) {
+      if (localStorage.acceptArray !== undefined || localStorage.acceptArray !== '') {
+        for (let i = 0; i < JSON.parse(localStorage.acceptArray).length; i++) {
           let partOf = false
           for (let j = 0; j < this.hazardsSliced.length; j++) {
-            if (JSON.parse(localStorage.acceptCounterArray)[i] === this.hazardsSliced[j].id) {
+            if (JSON.parse(localStorage.acceptArray)[i] === this.hazardsSliced[j].id) {
               partOf = true
             }
           }
           if (partOf === false) {
-            const index = JSON.parse(localStorage.acceptCounterArray).indexOf(JSON.parse(localStorage.acceptCounterArray)[i])
+            const index = JSON.parse(localStorage.acceptArray).indexOf(JSON.parse(localStorage.acceptArray)[i])
             if (index !== -1) {
-              let a = JSON.parse(localStorage.acceptCounterArray)
+              let a = JSON.parse(localStorage.acceptArray)
               a.splice(index, 1)  // 2nd parameter means remove one item only
-              localStorage.acceptCounterArray = JSON.stringify(a)
+              localStorage.acceptArray = JSON.stringify(a)
             }
           }
         }
@@ -756,11 +757,11 @@ export default {
       if (localStorage.checkedCheckboxesArray === undefined || localStorage.checkedCheckboxesArray === '') {
         localStorage.checkedCheckboxesArray = JSON.stringify([])
       }
-      if (localStorage.acceptCounterArray === undefined || localStorage.acceptCounterArray === '') {
-        localStorage.acceptCounterArray = JSON.stringify([])
+      if (localStorage.acceptArray === undefined || localStorage.acceptArray === '') {
+        localStorage.acceptArray = JSON.stringify([])
       }
       this.checkedCheckboxesArray = JSON.parse(localStorage.checkedCheckboxesArray)
-      this.acceptCounterArray = JSON.parse(localStorage.acceptCounterArray)
+      this.acceptArray = JSON.parse(localStorage.acceptArray)
 
       // If checkbox "nicht" zutreffend" is selected
       if (!acceptStatus && !specification && itemId !== null) {
@@ -775,11 +776,11 @@ export default {
 
       //If accept-Icon is set and should be unset after checkbox is checked
       if (itemId !== null) {
-        if (this.acceptCounterArray.includes(itemId) && acceptStatus === false) {
+        if (this.acceptArray.includes(itemId) && acceptStatus === false) {
           this.acceptCounter--
           //Accept-Array
-          const index = this.acceptCounterArray.indexOf(itemId)
-          this.acceptCounterArray.splice(index, 1)
+          const index = this.acceptArray.indexOf(itemId)
+          this.acceptArray.splice(index, 1)
         }
         this.$forceUpdate()
       }
@@ -808,28 +809,28 @@ export default {
         this.hazards[a].notApplicable = this.checkedCheckboxesArray.includes(numberInArray);
 
         //Create accepted-Sort
-        this.hazards[a].accepted = this.acceptCounterArray.includes(numberInArray);
+        this.hazards[a].accepted = this.acceptArray.includes(numberInArray);
       }
 
       //General Settings
       localStorage.checkedCheckboxesArray = JSON.stringify(this.checkedCheckboxesArray)
-      localStorage.acceptCounterArray = JSON.stringify(this.acceptCounterArray)
+      localStorage.acceptArray = JSON.stringify(this.acceptArray)
       this.specification_customMadeDevice = null
       this.postProcessingPossibility = null
       this.customMadeDeviceDescription = ''
 
       this.numberOfCurrentCheckboxes = this.hazards.filter(priority => priority.categoryId === (this.nameCounterTable + 1)).length
-      var numberFinished = JSON.parse(localStorage.checkedCheckboxesArray).length + JSON.parse(localStorage.acceptCounterArray).length
+      var numberFinished = JSON.parse(localStorage.checkedCheckboxesArray).length + JSON.parse(localStorage.acceptArray).length
       this.$emit('ReadCheckboxNumber', numberFinished, this.numberOfCurrentCheckboxes)
 
-      let acceptCounterArrayLength = JSON.parse(localStorage.acceptCounterArray).length
-      this.$emit('CustomMadeProcessSettings', acceptCounterArrayLength)
+      let acceptArrayLength = JSON.parse(localStorage.acceptArray).length
+      this.$emit('CustomMadeProcessSettings', acceptArrayLength)
     },
     accept(itemId) {
       this.customMadeDeviceDescription = ''
 
-      if (!this.acceptCounterArray.includes(itemId)) {
-        this.acceptCounterArray.push(itemId)
+      if (!this.acceptArray.includes(itemId)) {
+        this.acceptArray.push(itemId)
         this.acceptCounter++
         document.getElementById("confirm" + itemId).checked = false
 
@@ -839,7 +840,7 @@ export default {
         }
 
         localStorage.checkedCheckboxesArray = JSON.stringify(this.checkedCheckboxesArray)
-        localStorage.acceptCounterArray = JSON.stringify(this.acceptCounterArray)
+        localStorage.acceptArray = JSON.stringify(this.acceptArray)
       }
 
       this.toastMessage = 'Gefährdung wurde erfolgreich verifiziert.'
@@ -858,10 +859,10 @@ export default {
       }
       return false
     },
-    itemIdPartOfacceptCounterArray(itemId) {
-      if (localStorage.acceptCounterArray !== '') {
-        let newAcceptCounterArray = JSON.parse(localStorage.acceptCounterArray)
-        if (newAcceptCounterArray.includes(itemId)) {
+    itemIdPartOfAcceptArray(itemId) {
+      if (localStorage.acceptArray !== '') {
+        let newAcceptArray = JSON.parse(localStorage.acceptArray)
+        if (newAcceptArray.includes(itemId)) {
           return 1.0
         }
       }
@@ -869,7 +870,7 @@ export default {
     },
     cancel() {
       localStorage.checkedCheckboxesArray = ''
-      localStorage.acceptCounterArray = ''
+      localStorage.acceptArray = ''
 
       this.specification_customMadeDevice = null
       this.postProcessingPossibility = null
