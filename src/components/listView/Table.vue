@@ -345,12 +345,12 @@ export default {
       hazards: [
         {
           id: 1,
+          categoryId: 1,
+          name: "Designvorgabe Mindestdicke kann nicht eingehalten werden. - Dicke des Implantsts zu dünn.",
           imageName: require('../../assets/svg/table_icons/toThin.svg'),
           riskPriority: "2 mittel",
-          name: "Designvorgabe Mindestdicke kann nicht eingehalten werden. - Dicke des Implantsts zu dünn.",
-          notApplicable: true,
-          accepted: true,
-          categoryId: 1,
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Implantat bricht aufgrund der zu kleinen Mindestdicke.",
           damage: [
             {description: 'Zweitoperation'},
@@ -387,6 +387,8 @@ export default {
           name: "Designvorgabe Anzahl Schraubenlöcher kann nicht eingehalten werden.",
           imageName: require('../../assets/svg/table_icons/nut.svg'),
           riskPriority: "2 mittel",
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Implantat löst sich nach der Implantation unter Last, aufgrund ungenügender Verankerung.",
           damage: [
             {description: 'Schädigung der Weichteile / Sehnervs'},
@@ -404,6 +406,8 @@ export default {
           name: "Designvorgabe Platzierung der Schraubenlöcher kann nicht eingehalten werden.",
           imageName: require('../../assets/svg/table_icons/nut.svg'),
           riskPriority: "2 mittel",
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Implantat bricht aufgrund der zu nahen Schrauben am Implantatrand.",
           damage: [
             {description: 'Zweitoperation'},
@@ -421,6 +425,8 @@ export default {
           name: "Designvorgabee Schraubentyp/Durchmesser/Länge kann nicht eingehalten werden.",
           imageName: require('../../assets/svg/table_icons/screw.svg'),
           riskPriority: "1 gering",
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Stabilitätsverlust bei Fixierung weil Schraubentyp und -dimension nicht zur Implantatdimension und dem zu erwartenden Lastfall passen.",
           damage: [
             {description: 'Verlängerung der OP.'},
@@ -439,6 +445,8 @@ export default {
           name: "Bauteile können nicht diagonal zum Gasstrom auf der Bauplattform platziert werden.",
           imageName: require('../../assets/svg/table_icons/not_diagonal_placable.svg'),
           riskPriority: "2 mittel",
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Implantat bricht durch Gefügefehler (Reduzierte mechansiche Festigkeit) aufgrund Schweissspritzer von benachbarten Bauteile.",
           damage: [
             {description: 'Zweitoperation'},
@@ -456,6 +464,8 @@ export default {
           name: "Verunreinigte Bauplattform.",
           imageName: require('../../assets/svg/table_icons/contaminated_building_platform.svg'),
           riskPriority: "2 mittel",
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Verunreinigungen gelangen ins Bauteil und schliesslich in den Patienten.",
           damage: [
             {description: 'Infektion, '},
@@ -475,6 +485,8 @@ export default {
           name: "Bauplattform ist nicht aus demselben Material wie das Baumaterial.",
           imageName: require('../../assets/svg/table_icons/not_same_material.svg'),
           riskPriority: "2 mittel",
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Ordnungsgemässe Lagerung der Bauplattform gemäss SOP. Vor Gebrauch die Bauplattform mit G23.",
           damage: [
             {description: 'Ordnungsgemässe Lagerung der Bauplattform gemäss SOP.'},
@@ -493,6 +505,8 @@ export default {
           name: "Die Beschichterlippe ist abgenutzt.",
           imageName: require('../../assets/svg/table_icons/coater_flap_worn.svg'),
           riskPriority: "2 mittel",
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Implantat ist nicht formschlüssig - passt nicht mehr aufgrund verschlechtertem Schichtaufbau.",
           damage: [
             {description: 'Schädigung der Weichteile / Sehnervs.'},
@@ -512,6 +526,8 @@ export default {
           name: "Der Beschichter kollidiert mit aus dem Pulverbett ragenden Bauteilstrukturen.",
           imageName: require('../../assets/svg/table_icons/coater_collides.svg'),
           riskPriority: "2 mittel",
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Implantat ist nicht formschlüssig - passt nicht mehr aufgrund einer Verschiebung der Bauteilstruktur oder Ablösung von der  Supportstruktur.",
           damage: [
             {description: 'Schädigung der Weichteile / Sehnervs.'},
@@ -530,6 +546,8 @@ export default {
           name: "Fehlerhafter Schichtaufbau.",
           imageName: require('../../assets/svg/table_icons/faulty_layer_structure.svg'),
           riskPriority: "2 mittel",
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Implantat bricht durch Gefügefehler (Reduzierte mechanische Festigkeit) aufgrund  von Fehlern im Schichtaufbau verursacht durch ungleichmässig ausgestrichenes Pulver.",
           damage: [
             {description: 'Zweitoperation'},
