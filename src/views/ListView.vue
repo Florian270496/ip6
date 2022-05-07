@@ -25,7 +25,6 @@
 </template>
 
 <script>
-
 import Header from '@/components/Header.vue'
 import PathSection from '@/components/PathSection.vue'
 import Notification from "@/components/listView/Notification";

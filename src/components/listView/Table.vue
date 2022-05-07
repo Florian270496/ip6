@@ -332,6 +332,8 @@ export default {
       specification_customMadeDevice: null,
       postProcessingPossibility: null,
       search: '',
+      notApplicableSort: [false],
+      acceptedSort: [],
       expanded: [],
       singleExpand: false,
       hazardsHeader: [
@@ -345,10 +347,12 @@ export default {
       hazards: [
         {
           id: 1,
-          categoryId: 1,
-          name: "Designvorgabe Mindestdicke kann nicht eingehalten werden. - Dicke des Implantsts zu dünn.",
           imageName: require('../../assets/svg/table_icons/toThin.svg'),
           riskPriority: "2 mittel",
+          name: "Designvorgabe Mindestdicke kann nicht eingehalten werden. - Dicke des Implantsts zu dünn.",
+          notApplicable: true,
+          accepted: true,
+          categoryId: 1,
           hazardDetailDescription: "Implantat bricht aufgrund der zu kleinen Mindestdicke.",
           damage: [
             {description: 'Zweitoperation'},
@@ -366,6 +370,8 @@ export default {
           name: "Designvorgabe Mindestdicke kann nicht eingehalten werden. - Implantat nicht formstabil.",
           imageName: require('../../assets/svg/table_icons/dimensionally_unstable.svg'),
           riskPriority: "2 mittel",
+          notApplicable: false,
+          accepted: false,
           hazardDetailDescription: "Implantat bleibt nicht formstabil bei der Implantierung was zu einer schlechten Passgenauigkeit führt.",
           damage: [
             {description: 'Schädigung der Weichteile / Sehnervs'},
@@ -656,7 +662,6 @@ export default {
     }
   },
   mounted() {
-
     if (this.$route.params.hazardOriginalIdListView !== undefined) {
       this.hazardOriginalIdTableNumber = this.$route.params.hazardOriginalIdListView
     }
@@ -776,6 +781,26 @@ export default {
         if (!newItem) {
           this.toastMessage = 'Gefährdung wurde erfolgreich verifiziert.'
           this.launch_notification()
+        }
+      }
+
+      // Update Sort
+      this.notApplicableSort.length = 0
+      for (let a = 0; a < this.hazards.length; a++) {
+        let numberInArray = a + 1
+
+        //Create notApplicable-Sort
+        if(this.checkedCheckboxesArray.includes(numberInArray)){
+          console.log(this.hazards[a].notApplicable = true)
+        } else {
+          console.log(this.hazards[a].notApplicable = false)
+        }
+
+        //Create accepted-Sort
+        if(this.acceptCounterArray.includes(numberInArray)){
+          console.log(this.hazards[a].accepted = true)
+        } else {
+          console.log(this.hazards[a].accepted = false)
         }
       }
 
