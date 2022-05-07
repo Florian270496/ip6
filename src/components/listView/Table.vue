@@ -170,7 +170,7 @@
                     </div>
                     <div class="button-container detail-view__button-container">
                       <router-link
-                          :to="{ name: 'NewHazard', params: { actualTitleNameNewHazard: actualTitleNameTable, itemIdNewHazard: item.id, acceptCounterArrayLengthNewHazard : acceptCounterArray.length }}">
+                          :to="{ name: 'NewHazard', params: { actualTitleNameNewHazard: actualTitleNameTable, itemIdNewHazard: item.id, acceptArrayLengthNewHazard : acceptArray.length }}">
                         <button class="button button--cancel button--detail-view button--detail-view-cancel">Gefährdung
                           erstellen
                         </button>
