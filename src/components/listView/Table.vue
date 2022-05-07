@@ -790,18 +790,10 @@ export default {
         let numberInArray = a + 1
 
         //Create notApplicable-Sort
-        if(this.checkedCheckboxesArray.includes(numberInArray)){
-          console.log(this.hazards[a].notApplicable = true)
-        } else {
-          console.log(this.hazards[a].notApplicable = false)
-        }
+        this.hazards[a].notApplicable = this.checkedCheckboxesArray.includes(numberInArray);
 
         //Create accepted-Sort
-        if(this.acceptCounterArray.includes(numberInArray)){
-          console.log(this.hazards[a].accepted = true)
-        } else {
-          console.log(this.hazards[a].accepted = false)
-        }
+        this.hazards[a].accepted = this.acceptCounterArray.includes(numberInArray);
       }
 
       //General Settings
