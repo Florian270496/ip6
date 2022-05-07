@@ -28,7 +28,7 @@
 
 import Header from '@/components/Header.vue'
 import PathSection from '@/components/PathSection.vue'
-import Notification from "@/components/Notification";
+import Notification from "@/components/listView/Notification";
 import Table from "@/components/listView/Table";
 import ProgressOverview from "@/components/listView/ProgressOverview";
 import ButtonContainerListView from "@/components/listView/ButtonContainerListView";
